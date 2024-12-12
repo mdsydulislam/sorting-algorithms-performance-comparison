@@ -4,7 +4,6 @@ function insertionSort($arr) {
     for ($i = 1; $i < $n; $i++) {
         $key = $arr[$i];
         $j = $i - 1;
-
         while ($j >= 0 && $arr[$j] > $key) {
             $arr[$j + 1] = $arr[$j];
             $j--;
@@ -13,9 +12,8 @@ function insertionSort($arr) {
     }
     return $arr;
 }
-
 $data = array_map('intval', file('nearly_sorted_data.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES));
 $start = microtime(true);
 $sortedData = insertionSort($data);
 $end = microtime(true);
-echo "Insertion Sort Execution Time: " . ($end - $start) . " seconds\n";
+echo "Insertion Sort Execution Time: " . number_format(($end - $start) * 1000, 4) . " milliseconds\n";

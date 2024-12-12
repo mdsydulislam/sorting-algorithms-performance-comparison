@@ -1,5 +1,4 @@
 package main
-
 import (
 	"bufio"
 	"fmt"
@@ -7,7 +6,6 @@ import (
 	"strconv"
 	"time"
 )
-
 func bubbleSort(arr []int) {
 	n := len(arr)
 	for i := 0; i < n-1; i++ {
@@ -18,29 +16,25 @@ func bubbleSort(arr []int) {
 		}
 	}
 }
-
 func main() {
 	data := readData("ascending_data.txt")
 	start := time.Now()
 	bubbleSort(data)
 	elapsed := time.Since(start)
-	fmt.Printf("Bubble Sort Execution Time: %.6f seconds\n", elapsed.Seconds())
+	fmt.Printf("Bubble Sort Execution Time: %.4f milliseconds\n", elapsed.Seconds()*1000)
 }
-
 func readData(filename string) []int {
 	file, err := os.Open(filename)
 	if err != nil {
 		panic(err)
 	}
 	defer file.Close()
-
 	var data []int
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		num, _ := strconv.Atoi(scanner.Text())
 		data = append(data, num)
 	}
-
 	if err := scanner.Err(); err != nil {
 		panic(err)
 	}

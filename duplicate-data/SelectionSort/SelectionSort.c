@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
 void selectionSort(int arr[], int n) {
     for (int i = 0; i < n - 1; i++) {
         int minIdx = i;
@@ -14,31 +13,25 @@ void selectionSort(int arr[], int n) {
         arr[i] = temp;
     }
 }
-
 int main() {
     FILE *file = fopen("duplicate_data.txt", "r");
     if (!file) {
         printf("Error: Cannot open duplicate_data.txt\n");
         return 1;
     }
-
     int n = 25000;
     int *arr = (int *)malloc(n * sizeof(int));
     if (!arr) {
         printf("Memory allocation failed\n");
         return 1;
     }
-
     for (int i = 0; i < n; i++) fscanf(file, "%d", &arr[i]);
     fclose(file);
-
     clock_t start = clock();
     selectionSort(arr, n);
     clock_t end = clock();
-
     double time_taken = ((double)(end - start)) / CLOCKS_PER_SEC;
-    printf("Selection Sort Execution Time: %.6f seconds\n", time_taken);
-
+    printf("Selection Sort Execution Time: %.4f milliseconds\n", time_taken * 1000);
     free(arr);
     return 0;
 }

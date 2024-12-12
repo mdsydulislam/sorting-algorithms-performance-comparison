@@ -12,9 +12,8 @@ function bubbleSort($arr) {
     }
     return $arr;
 }
-
 $data = array_map('intval', file('descending_data.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES));
 $start = microtime(true);
 $sortedData = bubbleSort($data);
 $end = microtime(true);
-echo "Bubble Sort Execution Time: " . ($end - $start) . " seconds\n";
+echo "Bubble Sort Execution Time: " . number_format(($end - $start) * 1000, 4) . " milliseconds\n";
